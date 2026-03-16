@@ -1,0 +1,19 @@
+services:
+  persmgr-app:
+    build:
+      context: .
+    container_name: persmgr-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      APP_DATA_DIR: /app/data
+      APP_UPLOAD_DIR: /app/data/uploads
+      TZ: Asia/Kolkata
+    volumes:
+      - persmgr_data:/app/data
+    ports:
+      - "8000:8000"
+
+volumes:
+  persmgr_data:
